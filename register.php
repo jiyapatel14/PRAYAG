@@ -5,6 +5,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     include 'connect.php';
     $ps_no = $_POST["ps_no"];
     $password = $_POST["password"];
+    $ConfirmPassword = $_POST["ConfirmPassword"];
     $fullName = $_POST["fullName"];
     $emailId = $_POST["emailId"];
     $mobileNo = $_POST["mobileNo"];
@@ -21,12 +22,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $expectations = $_POST["expectations"];
 
     $exists=false;
-    if($exists==false){
-        $sql = "INSERT INTO `users1` ( `ps_no`, `password`, `dt`,`fullName`, `emailId`, `mobileNo`, `gender`, `dob`, `address`, `city`, `state`, `pincode`, `qualification`, `field`, `percentage`, `program`, `expectations`) VALUES ('$ps_no', '$password', current_timestamp(),'$fullName', '$emailId', '$mobileNo', '$gender', '$dob', '$address', '$city', '$state', '$pincode', '$qualification', '$field', '$percentage', '$program', '$expectations')";
+    if(($password==$ConfirmPassword) && $exists==false){
+        $sql = "INSERT INTO `users1` ( `ps_no`, `ConfirmPassword`,`password`, `dt`,`fullName`, `emailId`, `mobileNo`, `gender`, `dob`, `address`, `city`, `state`, `pincode`, `qualification`, `field`, `percentage`, `program`, `expectations`) VALUES ('$ps_no', '$password','$ConfirmPassword', current_timestamp(),'$fullName', '$emailId', '$mobileNo', '$gender', '$dob', '$address', '$city', '$state', '$pincode', '$qualification', '$field', '$percentage', '$program', '$expectations')";
          $result = mysqli_query($conn, $sql);
          if ($result){
             $showAlert = true;
          }
+    }
+    else{
+        $showError = "Passwords do not match"; 
     }
    }
     
@@ -151,6 +155,10 @@ button{
 .display{
     display: block;
 }
+.form-dropdown option
+{
+    color: black;
+}
     </style>
   </head>
   <body style="background-color:#F0FFFF;">
@@ -179,82 +187,137 @@ button{
     <div class="container my-4">
      <form action="register.php" method="post">
      <h2 class="text-center">Register</h2>
-        <div class="form-group">
-            <label for="ps_no">PS Number:</label>
-            <input type="text" class="form-control" id="ps_no" name="ps_no" aria-describedby="emailHelp">    
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="ps_no">PS Number:</label>
+                    <input type="text" class="form-control" id="ps_no" name="ps_no" aria-describedby="emailHelp" placeholder="PS NO.">    
+                </div>
+            </div>
         </div>
-        <div class="form-group left">
-            <label for="fullName">Name:</label>
-            <input type="text" class="form-control" id="fullName" name="fullName" aria-describedby="emailHelp">
-        </div> 
-        <div class="form-group">
-            <label for="emailId">Email Id:</label>
-            <input type="text" class="form-control" id="emailId" name="emailId" aria-describedby="emailHelp">
-            
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group left">
+                    <label for="fullName">Name:</label>
+                    <input type="text" class="form-control" id="fullName" name="fullName" aria-describedby="emailHelp" placeholder="Name">
+                </div>
+            </div>
+            <div class="col-md-6 ">
+                <div class="form-group">
+                    <label for="emailId">Email Id:</label>
+                    <input type="text" class="form-control" id="emailId" name="emailId" aria-describedby="emailHelp" placeholder="email id">
+                </div>
+            </div>
         </div>
-        <div class="form-group">
-            <label for="password">Password:</label>
-            <input type="password" class="form-control" id="password" name="password">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="ConfirmPassword">Confirm Password:</label>
+                    <input type="ConfirmPassword" class="form-control" id="ConfirmPassword" name="ConfirmPassword" placeholder="Confirm Password">
+                    <small id="emailHelp" class="form-text text-muted">Make sure to type the same password</small>
+                </div>
+            </div>
         </div>
+        <!-- <div style="display: flex; flex-direction: row;">
+        <div class="form-group display"> -->
+        <div class="row">
+            <div class="col-md-4">    
+                <label for="mobileNo">Mobile Number:</label>
+                <input type="text" class="form-control" id="mobileNo" name="mobileNo" aria-describedby="emailHelp" placeholder="Mobile No.">           
+            </div>
+        <!-- <div class="form-group display"> -->
+            <div class="col-md-4 drop" >
+                <label for="gender">Gender</label>
+                <select name="gender" class="form-control form-dropdown option">
+	                <option value="none" hidden>Gender</option>
+	                <option value="male">Male</option>
+	                <option value="female">Female</option>
+	                <option value="other">Other</option>   
+                </select>
 
-        <div style="display: flex; flex-direction: row;">
-        <div class="form-group display">
-            <label for="mobileNo">Mobile Number:</label>
-            <input type="text" class="form-control" id="mobileNo" name="mobileNo" aria-describedby="emailHelp">           
-        </div>
-        <div class="form-group display">
-            <label for="gender">Gender:</label>
-            <input type="text" class="form-control" id="gender" name="gender" aria-describedby="emailHelp">           
-        </div>
-        <div class="form-group display">
-            <label for="dob">Date of Birth:</label>
-            <input type="text" class="form-control" id="dob" name="dob" aria-describedby="emailHelp">
-        </div>   
+            </div>
+        <!-- <div class="form-group display"> -->
+            <div class="col-md-4">
+                <label for="dob">Date of Birth:</label>
+                <input type="date" class="form-control" id="dob" name="dob">
+                
+                <!-- <div id="date-picker-dob" class="md-form md-outline input-with-post-icon datepicker" inline="true">
+                    <input placeholder="Select date" type="text" id="dob" class="form-control">
+                    <label for="dob">Date of Birth</label>
+                    <i class="fas fa-calendar input-prefix"></i>
+                </div> -->
+
+                
+            </div>   
         </div>
 
         <div class="form-group">
             <label for="address">Address:</label>
-            <input type="text" class="form-control" id="address" name="address" aria-describedby="emailHelp">     
+            <input type="text" class="form-control" id="address" name="address" aria-describedby="emailHelp" placeholder="Address" >     
         </div>
 
-        <div style="display: table;  border-collapse: separate;">
-        <div class="form-group" style="display: table-cell" >
-            <label for="city">City:</label>
-            <input type="text" class="form-control" id="city" name="city" aria-describedby="emailHelp">           
+        <!-- <div style="display: table;  border-collapse: separate;">
+        <div class="form-group" style="display: table-cell" > -->
+        <div class="row">
+            <div class="col-md-4 mb-4">    
+                <label for="city">City:</label>
+                <input type="text" class="form-control" id="city" name="city" aria-describedby="emailHelp" placeholder="City">           
+            </div>
+        <!-- <div class="form-group" style="display: table-cell"> -->
+            <div class="col-md-4 mb-4">    
+                <label for="state">Sate:</label>
+                <input type="text" class="form-control" id="state" name="state" aria-describedby="emailHelp" placeholder="State">           
+            </div>
+        <!-- <div class="form-group" style="display: table-cell"> -->
+            <div class="col-md-4 mb-4"> 
+                <label for="pincode">Pin code:</label>
+                <input type="text" class="form-control" id="pincode" name="pincode" aria-describedby="emailHelp" placeholder="Pincode">
+            </div>   
         </div>
-        <div class="form-group" style="display: table-cell">
-            <label for="state">Sate:</label>
-            <input type="text" class="form-control" id="state" name="state" aria-describedby="emailHelp">           
-        </div>
-        <div class="form-group" style="display: table-cell">
-            <label for="pincode">Pin code:</label>
-            <input type="text" class="form-control" id="pincode" name="pincode" aria-describedby="emailHelp">
-        </div>   
-        </div>
-
-        <div class="form-group">
-            <label for="qualification">Qualification:</label>
-            <input type="text" class="form-control" id="qualification" name="qualification" aria-describedby="emailHelp">  
-        </div>
-
-        <div style="display: flex; flex-direction: row;">
-        <div class="form-group display">
-            <label for="field">Field:</label>
-            <input type="text" class="form-control" id="field" name="field" aria-describedby="emailHelp">        
-        </div>
-        <div class="form-group display">
-            <label for="percentage">Percentage:</label>
-            <input type="text" class="form-control" id="percentage" name="percentage" aria-describedby="emailHelp">
-        </div>  
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="qualification">Qualification:</label>
+                    <input type="text" class="form-control" id="qualification" name="qualification" aria-describedby="emailHelp" placeholder="Qualification">  
+                </div>
+            </div>
         </div>
 
-        <div class="form-group">
-            <label for="program">Program:</label>
-            <input type="text" class="form-control" id="program" name="program" aria-describedby="emailHelp">   
+        <!-- <div style="display: flex; flex-direction: row;"> -->
+        <!-- <div class="form-group display"> --> 
+        <div class="row">
+            <div class="col-md-6 mb-4">    
+                <label for="field">Field:</label>
+                <input type="text" class="form-control" id="field" name="field" aria-describedby="emailHelp" placeholder="Field">        
+            </div>
+        <!-- <div class="form-group display"> -->
+            <div class="col-md-6 mb-4">
+                <label for="percentage">Percentage:</label>
+                <input type="text" class="form-control" id="percentage" name="percentage" aria-describedby="emailHelp" placeholder="Percentage">
+            </div>  
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="program">Program:</label>
+                    <select name="program" class="form-control form-dropdown option">
+	                    <option value="none" hidden>Program</option>
+	                    <option value="MultiEngineeringProgram">Multi Engineering Program</option>
+	                    <option value="ICspecificProgram">IC specific Program</option>
+	                    <option value="Prayag2.0">Prayag 2.0</option>   
+                    </select>
+                </div>
+            </div>       
         </div>
         <div class="form-group">
             <label for="expectations">Expectations from the Program:</label>
-            <input type="text" class="form-control" id="expectations" name="expectations" aria-describedby="emailHelp">
+            <input type="text" class="form-control" id="expectations" name="expectations" aria-describedby="emailHelp" placeholder="Expectations">
             
         </div>        
         <button type="submit" class="btn btn-info">Register</button>
