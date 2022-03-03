@@ -5,8 +5,8 @@ $password = "";
 $database = "prayagreg";
    
 // Create a connection 
-$conn = mysqli_connect($servername, $username, $password, $database);
-if($con){
+$conn = new mysqli_connect($servername, $username, $password, $database);
+if($conn){
     echo"success";
 }
 else{

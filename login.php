@@ -42,7 +42,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     box-sizing: border-box;
 }
 body{
-    background-color: #080710;
+
 }
 .background{
     width: 430px;

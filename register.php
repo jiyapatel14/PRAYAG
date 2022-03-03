@@ -81,6 +81,7 @@ body{
     );
     left: -390px;
     top: -210px;
+    position: fixed;
 }
 .shape:last-child{
     background: linear-gradient(
@@ -90,6 +91,7 @@ body{
     );
     right: -390px;
     bottom: -1350px;
+    position: fixed;
 }
 form{
     height: 1900px;
@@ -219,7 +221,7 @@ button{
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="ConfirmPassword">Confirm Password:</label>
-                    <input type="ConfirmPassword" class="form-control" id="ConfirmPassword" name="ConfirmPassword" placeholder="Confirm Password">
+                    <input type="password" class="form-control" id="ConfirmPassword" name="ConfirmPassword" placeholder="Confirm Password">
                     <small id="emailHelp" class="form-text text-muted">Make sure to type the same password</small>
                 </div>
             </div>
