@@ -41,7 +41,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -187,8 +187,8 @@ button{
         <div class="shape"></div>
     </div>
     <div class="container my-4">
-     <form action="register.php" method="post">
-     <h2 class="text-center">Register</h2>
+    <form action="register.php" method="post">
+    <h2 class="text-center">Register</h2>
         <div class="row">
             <div class="col-md-4">
                 <div class="form-group">
@@ -221,8 +221,12 @@ button{
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="ConfirmPassword">Confirm Password:</label>
+<<<<<<< HEAD
                     <input type="password" class="form-control" id="ConfirmPassword" name="ConfirmPassword" placeholder="Confirm Password">
                     <small id="emailHelp" class="form-text text-muted">Make sure to type the same password</small>
+=======
+                    <input type="ConfirmPassword" class="form-control" id="ConfirmPassword" name="ConfirmPassword" placeholder="Confirm Password">
+>>>>>>> 5988d716272a10679389a3a383db83577931a89f
                 </div>
             </div>
         </div>
@@ -320,11 +324,52 @@ button{
         <div class="form-group">
             <label for="expectations">Expectations from the Program:</label>
             <input type="text" class="form-control" id="expectations" name="expectations" aria-describedby="emailHelp" placeholder="Expectations">
-            
-        </div>        
-        <button type="submit" class="btn btn-info">Register</button>
-     </form>
+        </div>
+        
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label>Enter Captcha:</label>
+                <input type="text" class="form-control" id="textinput" placeholder="Captcha">
+            </div>
+            <div class="form-group col-md-6" style="padding-top: 54px;">
+                <input type="text" class="form-control" readonly id="capt">
+            </div>
+        </div>
+        <h6 style="color: black;">Captcha not visible<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"  class="bi bi-arrow-repeat" viewBox="0 0 16 16" onclick="cap()">
+  <path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z"/>
+  <path fill-rule="evenodd" d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z"/>
+</svg></h6>        
+        <button onclick="validcap()" type="submit" class="btn btn-info">Register</button>
+    </form>
     </div>
+
+    <script type="text/javascript">
+    function cap(){
+    var alpha = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V'
+                 ,'W','X','Y','Z','1','2','3','4','5','6','7','8','9','0','a','b','c','d','e','f','g','h','i',
+                 'j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z', '!','@','#','$','%','^','&','*','+'];
+                 var a = alpha[Math.floor(Math.random()*71)];
+                 var b = alpha[Math.floor(Math.random()*71)];
+                 var c = alpha[Math.floor(Math.random()*71)];
+                 var d = alpha[Math.floor(Math.random()*71)];
+                 var e = alpha[Math.floor(Math.random()*71)];
+                 var f = alpha[Math.floor(Math.random()*71)];
+
+                 var final = a+b+c+d+e+f;
+                 document.getElementById("capt").value=final;
+               }
+               function validcap(){
+                var stg1 = document.getElementById('capt').value;
+                var stg2 = document.getElementById('textinput').value;
+                if(stg1==stg2){
+                  alert("Form is validated Succesfully");
+                  return true;
+                }else{
+                  alert("Please enter a valid captcha");
+                  return false;
+                }
+               }
+    </script>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
