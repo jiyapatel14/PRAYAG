@@ -23,7 +23,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 session_start();
                 $_SESSION['loggedin'] = true;
                 $_SESSION['ps_no'] = $ps_no;
-            .    header("location: dashboard.html");
+                header("location: dashboard.html");
             } 
             else{
                 $showError = "Invalid Credentials";
