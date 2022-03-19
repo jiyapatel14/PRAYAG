@@ -221,12 +221,7 @@ button{
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="ConfirmPassword">Confirm Password:</label>
-<<<<<<< HEAD
-                    <input type="password" class="form-control" id="ConfirmPassword" name="ConfirmPassword" placeholder="Confirm Password">
-                    <small id="emailHelp" class="form-text text-muted">Make sure to type the same password</small>
-=======
                     <input type="ConfirmPassword" class="form-control" id="ConfirmPassword" name="ConfirmPassword" placeholder="Confirm Password">
->>>>>>> 5988d716272a10679389a3a383db83577931a89f
                 </div>
             </div>
         </div>
