@@ -1,15 +1,13 @@
 <?php 
 $servername = "localhost"; 
 $username = "root"; 
-$password = "";   
-$database = "prayagreg";
+$password = "";
+$database = "prayag_register";  
    
 // Create a connection 
-$conn = mysqli_connect($servername, $username, $password, $database);
-if($conn){
-    echo"success";
+$con = mysqli_connect($servername, $username, $password, $database);
+if(!$con){
+    die("connection to this database failed due to" . mysqli_connect_error());
 }
-{
-    echo "Connection failed: " . $e->getMessage();
-}
+
 ?>
