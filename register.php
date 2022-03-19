@@ -219,7 +219,7 @@ button{
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="ConfirmPassword">Confirm Password:</label>
-                    <input type="ConfirmPassword" class="form-control" id="ConfirmPassword" name="ConfirmPassword" placeholder="Confirm Password">
+                    <input type="Password" class="form-control" id="ConfirmPassword" name="ConfirmPassword" placeholder="Confirm Password">
                 </div>
             </div>
         </div>
