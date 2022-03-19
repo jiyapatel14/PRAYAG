@@ -1,17 +1,38 @@
 <?php
-$showAlert = false;
+$login = false;
 $showError = false;
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     include 'connect.php';
     $ps_no = $_POST["ps_no"];
     $password = $_POST["password"];
-    $exists=false;
-    if($exists==false){
-        $sql = "INSERT INTO `users1` ( `ps_no`, `password`, `dt`) VALUES ('$ps_no', '$password', current_timestamp())";
-         $result = mysqli_query($conn, $sql);
-         if ($result){
-            $showAlert = true;
-         }
+    // $exists=false;
+    // if($exists==false){
+    //     $sql = "INSERT INTO `users1` ( `ps_no`, `password`, `dt`) VALUES ('$ps_no', '$password', current_timestamp())";
+    //     $result = mysqli_query($con, $sql);
+    //     if ($result){
+    //         $showAlert = true;
+    //      }
+    // }
+    $sql = "Select * from users1 where ps_no='$ps_no' AND password='$password'";
+    $result = mysqli_query($con, $sql);
+    $num = mysqli_num_rows($result);
+    if ($num == 1){
+        while($row=mysqli_fetch_assoc($result)){
+            if (password_verify($password, $row['password'])){ 
+                $login = true;
+                session_start();
+                $_SESSION['loggedin'] = true;
+                $_SESSION['ps_no'] = $ps_no;
+            .    header("location: dashboard.html");
+            } 
+            else{
+                $showError = "Invalid Credentials";
+            }
+        }
+        
+    } 
+    else{
+        $showError = "Invalid Credentials";
     }
 //     else{
 //         $showError = "Passwords do not match";
@@ -140,11 +161,11 @@ button{
   </head>
   <body style="background-color:#F0FFFF;">
     <?php
-    if($showAlert){
+    if($login){
     echo ' <div class="alert alert-success alert-dismissible fade show" role="alert">
         <strong>Success!</strong> Your account is now created and you can login
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">×</span>
+            <span aria-hidden="true">&times;</span>
         </button>
     </div> ';
     }
@@ -152,7 +173,7 @@ button{
     echo ' <div class="alert alert-danger alert-dismissible fade show" role="alert">
         <strong>Error!</strong> '. $showError.'
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">×</span>
+            <span aria-hidden="true">&times;</span>
         </button>
     </div> ';
     }
