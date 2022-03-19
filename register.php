@@ -80,7 +80,7 @@ body{
         #CCCCFF
     );
     left: -390px;
-    top: -210px;
+    top: -240px;
     position: fixed;
 }
 .shape:last-child{
@@ -90,16 +90,16 @@ body{
         #008080        
     );
     right: -390px;
-    bottom: -1350px;
+    bottom: -1180px;
     position: fixed;
 }
 form{
-    height: 1900px;
+    height: 1680px;
     width: 1000px;
     background-color: rgba(255,255,255,0.13);
     position: absolute;
     transform: translate(-50%,-50%);
-    top: 110%;
+    top: 95%;
     left: 50%;
     border-radius: 10px;
     backdrop-filter: blur(10px);
@@ -188,7 +188,7 @@ button{
     </div>
     <div class="container my-4">
     <form action="register.php" method="post">
-    <h2 class="text-center">Register</h2>
+    <h2 class="text-center" style="font-size: 50px">Register</h2>
         <div class="row">
             <div class="col-md-4">
                 <div class="form-group">
@@ -221,7 +221,7 @@ button{
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="ConfirmPassword">Confirm Password:</label>
-                    <input type="ConfirmPassword" class="form-control" id="ConfirmPassword" name="ConfirmPassword" placeholder="Confirm Password">
+                    <input type="password" class="form-control" id="ConfirmPassword" name="ConfirmPassword" placeholder="Confirm Password">
                 </div>
             </div>
         </div>
