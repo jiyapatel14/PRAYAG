@@ -14,20 +14,22 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     //      }
     // }
     $sql = "Select * from users1 where ps_no='$ps_no' AND password='$password'";
+    // echo $sql;
+    // exit();
     $result = mysqli_query($con, $sql);
     $num = mysqli_num_rows($result);
     if ($num == 1){
         while($row=mysqli_fetch_assoc($result)){
-            if (password_verify($password, $row['password'])){ 
+            // if (password_verify($password, $row['password'])){ 
                 $login = true;
                 session_start();
                 $_SESSION['loggedin'] = true;
                 $_SESSION['ps_no'] = $ps_no;
-                header("location: dashboard.html");
-            } 
-            else{
-                $showError = "Invalid Credentials";
-            }
+                header("location: dashboard.php");
+            // } 
+            // else{
+            //     $showError = "Invalid Credentials";
+            // }
         }
         
     } 

@@ -18,6 +18,6 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin']!=true){
 <body>
     <div>
         Hello
-    </div>  
+    </div> 
 </body>
 </html>
