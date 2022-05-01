@@ -24,7 +24,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $exists=false;
     if(($password==$ConfirmPassword) && $exists==false){
         $sql = "INSERT INTO `users1` ( `ps_no`, `ConfirmPassword`,`password`, `dt`,`fullName`, `emailId`, `mobileNo`, `gender`, `dob`, `address`, `city`, `state`, `pincode`, `qualification`, `field`, `percentage`, `program`, `expectations`) VALUES ('$ps_no', '$password','$ConfirmPassword', current_timestamp(),'$fullName', '$emailId', '$mobileNo', '$gender', '$dob', '$address', '$city', '$state', '$pincode', '$qualification', '$field', '$percentage', '$program', '$expectations')";
-         $result = mysqli_query($con, $sql);
+         $result = mysqli_query($conn, $sql);
          if ($result){
             $showAlert = true;
          }

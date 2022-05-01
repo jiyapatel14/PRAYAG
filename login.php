@@ -16,7 +16,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $sql = "Select * from users1 where ps_no='$ps_no' AND password='$password'";
     // echo $sql;
     // exit();
-    $result = mysqli_query($con, $sql);
+    $result = mysqli_query($conn, $sql);
     $num = mysqli_num_rows($result);
     if ($num == 1){
         while($row=mysqli_fetch_assoc($result)){
@@ -29,7 +29,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             // } 
             // else{
             //     $showError = "Invalid Credentials";
-            // }
+             // }
         }
         
     } 
