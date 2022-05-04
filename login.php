@@ -95,7 +95,7 @@ body{
         #CCCCFF,
         #008080
     );
-    right: -30px;
+    right: -60px;
     bottom: -80px;
 }
 form{
@@ -159,6 +159,9 @@ button{
     border-radius: 5px;
     cursor: pointer;
 }
+.navbar-nav {
+            margin-left: auto;
+        }
     </style>
   </head>
   <body style="background-color:#F0FFFF;">
@@ -180,13 +183,35 @@ button{
     </div> ';
     }
     ?>
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: #e3f2fd;">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">L&T</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <ul class="navbar-nav">
+            <li class="nav-item mx-2">
+            <a class="btn btn-primary" href="http://localhost/prayag/register.php/" target="_blank" role="button">Register</a>
+            </li>
+            <li class="nav-item mx-2">
+            <a class="btn btn-primary" href="http://localhost/prayag/flogin.php" target="_blank" role="button">Faculty Login</a>
+            </li>
+            <li class="nav-item mx-2">
+            <a class="btn btn-primary" href="http://localhost/prayag/admin/login.php" target="_blank" role="button">Admin Login</a>
+            </li>
+        </ul>         
+        </div>
+    </nav>
     <div class="background">
         <div class="shape"></div>
         <div class="shape"></div>
     </div>
+    
     <div class="container my-4">
      <form action="login.php" method="post">
-     <h2 class="text-center">Login</h2>
+     <h2 class="text-center">Student Login</h2>
         <div class="form-group">
             <label for="ps_no">PS Number:</label>
             <input type="text" class="form-control" id="ps_no" name="ps_no" placeholder="PS number" aria-describedby="emailHelp">
