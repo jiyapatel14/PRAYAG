@@ -58,14 +58,6 @@ $rdata= json_decode($repeating_data);
 						<textarea class="form-control" name="location" cols="30" rows="3"><?php echo isset($location) ? $location : '' ?></textarea>
 					</div>
 					<div class="form-group">
-						<label for="" class="control-label">Test Link</label>
-						<textarea class="form-control" name="Test" cols="30" rows="3"><?php echo isset($test) ? $test : '' ?></textarea>
-					</div>
-					<div class="form-group">
-						<label for="" class="control-label">Feedback Form</label>
-						<textarea class="form-control" name="feedback" cols="30" rows="3"><?php echo isset($feedback) ? $feedback : '' ?></textarea>
-					</div>
-					<div class="form-group">
 						<div class="form-check">
 						  <input class="form-check-input" type="checkbox" value="1" id="is_repeating" name="is_repeating" <?php echo isset($is_repeating) && $is_repeating != 1 ? '' : 'checked' ?>>
 						  <label class="form-check-label" for="type">
