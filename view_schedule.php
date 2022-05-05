@@ -10,15 +10,6 @@ if(isset($_GET['id'])){
 ?>
 <div class="container-fluid">
 	<p>Schedule for: <b><?php echo ucwords($title) ?></b></p>
-	<p>Faculty Name:<b>
-		<?php 
-			$faculty = $conn->query("SELECT *,concat(lastname,', ',firstname,' ',middlename) as name FROM faculty order by concat(lastname,', ',firstname,' ',middlename) asc");
-			while($row= $faculty->fetch_array()):
-		?>
-		<?php echo ucwords($row['name']) ?>
-		<?php endwhile; ?>
-		</b>
-	</p> 
 	<p>Description: <b><?php echo $description ?></b></p>
 	<p>Location: </i> <b><?php echo $location ?></b></p>
 	<p>Time Start: </i> <b><?php echo date('h:i A',strtotime("2020-01-01 ".$time_from)) ?></b></p>

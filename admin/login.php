@@ -163,11 +163,11 @@ button{
      <h2 class="text-center">Admin Login</h2>
 	 <div class="form-group">
   		<label for="username" class="control-label">Username</label>
-  		<input type="text" id="username" name="username" class="form-control">
+  		<input type="text" id="username" name="username" placeholder="Username" class="form-control">
   	 </div>
   	 <div class="form-group">
   		<label for="password" class="control-label">Password</label>
-  		<input type="password" id="password" name="password" class="form-control">
+  		<input type="password" id="password" name="password" placeholder="Password"class="form-control">
 		<center><button class="btn btn-info">Login</button></center>
      </form>
     </div>
@@ -185,7 +185,7 @@ button{
 			data:$(this).serialize(),
 			error:err=>{
 				console.log(err)
-		$('#login-form button[type="button"]').removeAttr('disabled').html('Login');
+				$('#login-form button[type="button"]').removeAttr('disabled').html('Login');
 
 			},
 			success:function(resp){

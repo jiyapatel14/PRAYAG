@@ -336,8 +336,6 @@ Class Action {
 		$data .= ", title = '$title' ";
 		$data .= ", schedule_type = '$schedule_type' ";
 		$data .= ", description = '$description' ";
-		$data .= ", test = '$test' ";
-		$data .= ", feedback = '$feedback' ";
 		$data .= ", location = '$location' ";
 		if(isset($is_repeating)){
 			$data .= ", is_repeating = '$is_repeating' ";
