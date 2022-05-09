@@ -1,5 +1,4 @@
 <?php include('../connect.php');?>
-
 <div class="container-fluid">
 	
 	<div class="col-lg-12">
@@ -52,7 +51,7 @@
 									<th class="text-center">Action</th>
 								</tr>
 							</thead>
-							<tbody>
+							<tbody >
 								<?php 
 								$i = 1;
 								$subject = $conn->query("SELECT * FROM subjects order by id asc");
@@ -80,6 +79,7 @@
 		</div>
 	</div>	
 
+</div>
 </div>
 <style>
 	
