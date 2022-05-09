@@ -80,7 +80,7 @@ body{
         #CCCCFF
     );
     left: -390px;
-    top: -240px;
+    top: -190px;
     position: fixed;
 }
 .shape:last-child{
@@ -90,11 +90,11 @@ body{
         #008080        
     );
     right: -390px;
-    bottom: -1180px;
+    bottom: -1040px;
     position: fixed;
 }
 form{
-    height: 1680px;
+    height: 1550px;
     width: 1000px;
     background-color: rgba(255,255,255,0.13);
     position: absolute;
